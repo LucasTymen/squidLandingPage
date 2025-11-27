@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suite RGPD opérationnelle · SquidLanding</title>
+    <meta
+      name="description"
+      content="Droit à l’oubli, export, accès et consentement : comment SquidResearch™ a implémenté la conformité RGPD avec tests et benchmarks."
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <article class="section">
+      <p class="badge">RGPD</p>
+      <h1>Suite RGPD : demandes utilisateurs, API et benchmarks réels</h1>
+      <p>
+        SquidResearch™ a livré l’ensemble des droits utilisateurs : droit à
+        l’oubli, export, accès et gestion du consentement. Tout est accessible
+        via l’interface légale ET exposé par des endpoints sécurisés (auth,
+        throttling, RiskAssessmentMiddleware).
+      </p>
+      <h2>Ce qui est en production</h2>
+      <ul>
+        <li>
+          <strong>Droit à l’oubli :</strong> formulaire, email de confirmation,
+          planification Celery, logs SecurityEvent et job de suppression.
+        </li>
+        <li>
+          <strong>Export & accès :</strong> JSON structuré (profils, candidatures,
+          documents) généré à la volée et téléchargeable depuis l’espace
+          utilisateur.
+        </li>
+        <li>
+          <strong>Consentement :</strong> modèle PrivacyConsent + retrait +
+          journalisation IP/user-agent.
+        </li>
+        <li>
+          <strong>Benchmarks :</strong> 21 tests (unitaires + intégration +
+          benchmark) avec 100% de réussite et 90% de coverage.
+        </li>
+      </ul>
+      <h2>Pourquoi c’est important pour la démo SaaS ?</h2>
+      <p>
+        Chaque push Vercel embarque ces preuves. On montre ainsi aux incubateurs
+        / employeurs que la conformité n’est pas une promesse, mais un module
+        existant, testé et documenté.
+      </p>
+    </article>
+    <footer
+      style="
+        padding: 2rem 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+      "
+    >
+      © 2025 SquidResearch™ – Suite RGPD contrôlée & auditée
+    </footer>
+  </body>
+</html>
+

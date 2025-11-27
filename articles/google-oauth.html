@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google OAuth & Sécurité · SquidLanding</title>
+    <meta
+      name="description"
+      content="Guide SquidResearch™ pour connecter Gmail/Calendar/Drive avec séparation des credentials app vs utilisateur et respect du RGPD."
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <article class="section">
+      <p class="badge">Intégrations</p>
+      <h1>Connecter Gmail / Calendar / Drive sans exposer les utilisateurs</h1>
+      <p>
+        SquidResearch utilise un projet Google Cloud unique pour authentifier
+        l’application tandis que chaque utilisateur stocke son propre token dans
+        <code>GoogleIntegration</code>. Les champs sensibles sont chiffrés
+        (EncryptedTextField) et rafraîchis via Celery.
+      </p>
+      <h2>Checklist de configuration</h2>
+      <ol>
+        <li>Créer un projet Google Cloud « SquidResearch App »</li>
+        <li>
+          Activer Gmail API, Calendar API, Drive API puis configurer l’écran de
+          consentement
+        </li>
+        <li>
+          Créer un client OAuth (application web) avec les redirections :
+          <code>https://votre-domaine/integrations/google/oauth/callback/</code>
+        </li>
+        <li>
+          Déposer <code>GOOGLE_OAUTH_CLIENT_ID</code> et
+          <code>GOOGLE_OAUTH_CLIENT_SECRET</code> dans `.env`
+        </li>
+      </ol>
+      <h2>Bonnes pratiques</h2>
+      <ul>
+        <li>Audit RGPD : journaliser chaque demande d’accès / suppression</li>
+        <li>
+          Séparer les logs sensibles (tokens) dans un stockage chiffré hors
+          repo
+        </li>
+        <li>
+          Prévoir un fallback JSON (UserStorageManager) quand l’utilisateur ne
+          souhaite pas connecter Google
+        </li>
+      </ul>
+    </article>
+    <footer style="padding:2rem 1.5rem; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
+      © 2025 SquidResearch™ – Guides conformité & sécurité
+    </footer>
+  </body>
+</html>
+
