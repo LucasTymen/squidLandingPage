@@ -1,51 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TalentSourcing · SquidLanding</title>
-    <meta
-      name="description"
-      content="Pipeline TalentSourcing SquidResearch™ — scoring mission, stack, TJM et disponibilité avec conformité RGPD."
-    />
-    <link rel="stylesheet" href="../assets/styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TalentSourcing · SquidResearch™</title>
+    <meta name="description" content="Pipeline TalentSourcing SquidResearch™ — scoring mission, stack, TJM et disponibilité avec conformité RGPD." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <article class="section">
-      <p class="badge">Pipeline Freelance</p>
-      <h1>TalentSourcing : scorer les candidats comme un recruteur senior</h1>
-      <p>
-        SquidResearch réutilise son MatchingEngine pour transformer un brief
-        client en shortlist exploitable. L’algorithme analyse mission, stack,
-        TJM, disponibilité et historique de missions afin de délivrer un score
-        décroissant accompagné d’explications (+18 vertical similaire, -6
-        disponibilité).
-      </p>
-      <h2>Comment fonctionne la boucle ?</h2>
-      <ul>
-        <li>Coller l’offre dans l’interface TalentSourcing</li>
-        <li>
-          Normalisation automatique via MatchingInputBuilder (skills, mission,
-          langues, seniorité)
-        </li>
-        <li>
-          Scoring pondéré 40/25/15/10/10 sur mission, stack, soft-skills,
-          disponibilité et historique
-        </li>
-        <li>
-          Rapport exportable (PDF / JSON) prêt à être envoyé au client ou à
-          poster dans Slack
-        </li>
-      </ul>
-      <h2>Prochaines étapes</h2>
-      <p>
-        Connecter l’espace Freelance + pipeline Malt + réponses Slack pour
-        transformer chaque shortlist en opportunité activable.
-      </p>
-    </article>
-    <footer style="padding:2rem 1.5rem; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
-      © 2025 SquidResearch™ – Contenu synchronisé (RGPD ready)
+    <header class="site-header">
+      <a class="logo" href="/">SquidResearch™</a>
+      <nav class="nav">
+        <a href="/#features">Fonctionnalités</a>
+        <a href="/#modules">Modules</a>
+        <a href="/articles/rgpd-suite.html">RGPD</a>
+        <a href="/bientot.html">Bientôt</a>
+        <a href="/#contact" class="cta cta-small">Démo</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="container" style="max-width: 800px; margin-top: 60px;">
+        <div class="project-header">
+          <div class="breadcrumb">
+            <a href="/">Accueil</a> / <a href="/bientot.html">Bientôt</a> / TalentSourcing
+          </div>
+          <p class="eyebrow">Pipeline Freelance (À venir)</p>
+          <h1 class="headline">TalentSourcing : scorer les candidats comme un recruteur senior</h1>
+          <p class="project-subtitle">
+            SquidResearch réutilise son MatchingEngine pour transformer un brief client en shortlist exploitable. 
+            L'algorithme analyse mission, stack, TJM, disponibilité et historique de missions afin de délivrer un score 
+            et un rapport sourcé automatiquement.
+          </p>
+        </div>
+
+        <div class="project-content prose">
+          <div class="project-section">
+            <h2>Concept</h2>
+            <p>
+              Reprise du MatchingEngine existant pour scorer les freelances, générer un rapport sourcé et l'envoyer 
+              automatiquement au client. Statut : concept validé, UX à prototyper.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h2>Fonctionnalités prévues</h2>
+            <ul>
+              <li>Scoring multi-critères (mission, stack, TJM, disponibilité)</li>
+              <li>Génération automatique de rapports sourcés</li>
+              <li>Envoi automatique au client</li>
+              <li>Interface dédiée pour les recruteurs</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <div class="impact-highlights">
+              <h3>Note importante</h3>
+              <p>
+                Cette fonctionnalité est en phase de conception. Elle migrera vers la landing principale uniquement 
+                quand elle sera prête (code, tests, documentation).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-navigation">
+          <a href="/bientot.html" class="cta ghost">← Retour à Bientôt</a>
+          <a href="/" class="cta">Retour à l'accueil →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>SquidResearch™ — © 2025 Lucas Tymen. Tous droits réservés.</div>
+        <nav class="foot-nav">
+          <a href="/articles/rgpd-suite.html">RGPD</a>
+          <a href="/bientot.html">Bientôt</a>
+          <a href="mailto:contact@squidresearch.com">Contact</a>
+          <a href="https://github.com/LucasTymen/squidResearch" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
     </footer>
+
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
-

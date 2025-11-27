@@ -1,57 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Google OAuth & Sécurité · SquidLanding</title>
-    <meta
-      name="description"
-      content="Guide SquidResearch™ pour connecter Gmail/Calendar/Drive avec séparation des credentials app vs utilisateur et respect du RGPD."
-    />
-    <link rel="stylesheet" href="../assets/styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google OAuth & Sécurité · SquidResearch™</title>
+    <meta name="description" content="Guide SquidResearch™ pour connecter Gmail/Calendar/Drive avec séparation des credentials app vs utilisateur et respect du RGPD." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <article class="section">
-      <p class="badge">Intégrations</p>
-      <h1>Connecter Gmail / Calendar / Drive sans exposer les utilisateurs</h1>
-      <p>
-        SquidResearch utilise un projet Google Cloud unique pour authentifier
-        l’application tandis que chaque utilisateur stocke son propre token dans
-        <code>GoogleIntegration</code>. Les champs sensibles sont chiffrés
-        (EncryptedTextField) et rafraîchis via Celery.
-      </p>
-      <h2>Checklist de configuration</h2>
-      <ol>
-        <li>Créer un projet Google Cloud « SquidResearch App »</li>
-        <li>
-          Activer Gmail API, Calendar API, Drive API puis configurer l’écran de
-          consentement
-        </li>
-        <li>
-          Créer un client OAuth (application web) avec les redirections :
-          <code>https://votre-domaine/integrations/google/oauth/callback/</code>
-        </li>
-        <li>
-          Déposer <code>GOOGLE_OAUTH_CLIENT_ID</code> et
-          <code>GOOGLE_OAUTH_CLIENT_SECRET</code> dans `.env`
-        </li>
-      </ol>
-      <h2>Bonnes pratiques</h2>
-      <ul>
-        <li>Audit RGPD : journaliser chaque demande d’accès / suppression</li>
-        <li>
-          Séparer les logs sensibles (tokens) dans un stockage chiffré hors
-          repo
-        </li>
-        <li>
-          Prévoir un fallback JSON (UserStorageManager) quand l’utilisateur ne
-          souhaite pas connecter Google
-        </li>
-      </ul>
-    </article>
-    <footer style="padding:2rem 1.5rem; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
-      © 2025 SquidResearch™ – Guides conformité & sécurité
+    <header class="site-header">
+      <a class="logo" href="/">SquidResearch™</a>
+      <nav class="nav">
+        <a href="/#features">Fonctionnalités</a>
+        <a href="/#modules">Modules</a>
+        <a href="/articles/rgpd-suite.html">RGPD</a>
+        <a href="/bientot.html">Bientôt</a>
+        <a href="/#contact" class="cta cta-small">Démo</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="container" style="max-width: 800px; margin-top: 60px;">
+        <div class="project-header">
+          <div class="breadcrumb">
+            <a href="/">Accueil</a> / <a href="/#modules">Modules</a> / Intégrations
+          </div>
+          <p class="eyebrow">Intégrations</p>
+          <h1 class="headline">Connecter Gmail / Calendar / Drive sans exposer les utilisateurs</h1>
+          <p class="project-subtitle">
+            SquidResearch utilise un projet Google Cloud unique pour authentifier l'application tandis que chaque utilisateur 
+            stocke son propre token dans GoogleIntegration. Les champs sensibles sont chiffrés (EncryptedTextField) et rafraîchis via Celery.
+          </p>
+        </div>
+
+        <div class="project-content prose">
+          <div class="project-section">
+            <h2>Checklist de configuration</h2>
+            <ol>
+              <li>Créer un projet Google Cloud « SquidResearch App »</li>
+              <li>
+                Activer Gmail API, Calendar API, Drive API puis configurer l'écran de consentement
+              </li>
+              <li>
+                Créer un client OAuth (application web) avec les redirections :
+                <code>https://votre-domaine/integrations/google/oauth/callback/</code>
+              </li>
+              <li>
+                Déposer <code>GOOGLE_OAUTH_CLIENT_ID</code> et <code>GOOGLE_OAUTH_CLIENT_SECRET</code> dans `.env`
+              </li>
+            </ol>
+          </div>
+
+          <div class="project-section">
+            <h2>Bonnes pratiques</h2>
+            <ul>
+              <li>Audit RGPD : journaliser chaque demande d'accès / suppression</li>
+              <li>
+                Séparer les logs sensibles (tokens) dans un stockage chiffré hors repo
+              </li>
+              <li>
+                Prévoir un fallback JSON (UserStorageManager) quand l'utilisateur ne souhaite pas connecter Google
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Sécurité enrichissement</h2>
+            <p>
+              <strong>Règle critique :</strong> Les recherches d'enrichissement ne peuvent JAMAIS utiliser les credentials OAuth. 
+              Un système EnrichmentSecurityGuard valide automatiquement cette séparation pour éviter les bannissements de comptes Google/LinkedIn.
+            </p>
+            <ul>
+              <li>✅ Sessions anonymes pour enrichissement (Tor/proxy)</li>
+              <li>✅ Isolation stricte OAuth/enrichissement</li>
+              <li>✅ Logs anonymisés (aucun identifiant utilisateur)</li>
+              <li>❌ INTERDIT : Utiliser credentials OAuth pour enrichissement</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Fonctionnalités CRUD</h2>
+            <ul>
+              <li><strong>GoogleIntegration :</strong> Gestion connexions OAuth par utilisateur</li>
+              <li><strong>EmailThread :</strong> Threads Gmail avec métadonnées</li>
+              <li><strong>EmailMessage :</strong> Messages individuels avec contenu</li>
+              <li><strong>CalendarEvent :</strong> Événements Google Calendar</li>
+              <li><strong>Contact :</strong> Contacts Google avec synchronisation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-navigation">
+          <a href="/articles/rgpd-suite.html" class="cta ghost">← RGPD</a>
+          <a href="/" class="cta">Retour à l'accueil →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>SquidResearch™ — © 2025 Lucas Tymen. Tous droits réservés.</div>
+        <nav class="foot-nav">
+          <a href="/articles/rgpd-suite.html">RGPD</a>
+          <a href="/bientot.html">Bientôt</a>
+          <a href="mailto:contact@squidresearch.com">Contact</a>
+          <a href="https://github.com/LucasTymen/squidResearch" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
     </footer>
+
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
-

@@ -1,61 +1,118 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Suite RGPD opérationnelle · SquidLanding</title>
-    <meta
-      name="description"
-      content="Droit à l’oubli, export, accès et consentement : comment SquidResearch™ a implémenté la conformité RGPD avec tests et benchmarks."
-    />
-    <link rel="stylesheet" href="../assets/styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Suite RGPD opérationnelle · SquidResearch™</title>
+    <meta name="description" content="Droit à l'oubli, export, accès et consentement : comment SquidResearch™ a implémenté la conformité RGPD avec tests et benchmarks." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <article class="section">
-      <p class="badge">RGPD</p>
-      <h1>Suite RGPD : demandes utilisateurs, API et benchmarks réels</h1>
-      <p>
-        SquidResearch™ a livré l’ensemble des droits utilisateurs : droit à
-        l’oubli, export, accès et gestion du consentement. Tout est accessible
-        via l’interface légale ET exposé par des endpoints sécurisés (auth,
-        throttling, RiskAssessmentMiddleware).
-      </p>
-      <h2>Ce qui est en production</h2>
-      <ul>
-        <li>
-          <strong>Droit à l’oubli :</strong> formulaire, email de confirmation,
-          planification Celery, logs SecurityEvent et job de suppression.
-        </li>
-        <li>
-          <strong>Export & accès :</strong> JSON structuré (profils, candidatures,
-          documents) généré à la volée et téléchargeable depuis l’espace
-          utilisateur.
-        </li>
-        <li>
-          <strong>Consentement :</strong> modèle PrivacyConsent + retrait +
-          journalisation IP/user-agent.
-        </li>
-        <li>
-          <strong>Benchmarks :</strong> 21 tests (unitaires + intégration +
-          benchmark) avec 100% de réussite et 90% de coverage.
-        </li>
-      </ul>
-      <h2>Pourquoi c’est important pour la démo SaaS ?</h2>
-      <p>
-        Chaque push Vercel embarque ces preuves. On montre ainsi aux incubateurs
-        / employeurs que la conformité n’est pas une promesse, mais un module
-        existant, testé et documenté.
-      </p>
-    </article>
-    <footer
-      style="
-        padding: 2rem 1.5rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        text-align: center;
-      "
-    >
-      © 2025 SquidResearch™ – Suite RGPD contrôlée & auditée
+    <header class="site-header">
+      <a class="logo" href="/">SquidResearch™</a>
+      <nav class="nav">
+        <a href="/#features">Fonctionnalités</a>
+        <a href="/#modules">Modules</a>
+        <a href="/articles/rgpd-suite.html" class="active">RGPD</a>
+        <a href="/bientot.html">Bientôt</a>
+        <a href="/#contact" class="cta cta-small">Démo</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="container" style="max-width: 800px; margin-top: 60px;">
+        <div class="project-header">
+          <div class="breadcrumb">
+            <a href="/">Accueil</a> / <a href="/#modules">Modules</a> / RGPD
+          </div>
+          <p class="eyebrow">RGPD</p>
+          <h1 class="headline">Suite RGPD : demandes utilisateurs, API et benchmarks réels</h1>
+          <p class="project-subtitle">
+            SquidResearch™ a livré l'ensemble des droits utilisateurs : droit à l'oubli, export, accès et gestion du consentement. 
+            Tout est accessible via l'interface légale ET exposé par des endpoints sécurisés (auth, throttling, RiskAssessmentMiddleware).
+          </p>
+        </div>
+
+        <div class="project-content prose">
+          <div class="project-section">
+            <h2>Ce qui est en production</h2>
+            <ul>
+              <li>
+                <strong>Droit à l'oubli :</strong> formulaire, email de confirmation, planification Celery, 
+                logs SecurityEvent et job de suppression.
+              </li>
+              <li>
+                <strong>Export & accès :</strong> JSON structuré (profils, candidatures, documents) généré à la volée 
+                et téléchargeable depuis l'espace utilisateur.
+              </li>
+              <li>
+                <strong>Consentement :</strong> modèle PrivacyConsent + retrait + journalisation IP/user-agent.
+              </li>
+              <li>
+                <strong>Benchmarks :</strong> 21 tests (unitaires + intégration + benchmark) avec 100% de réussite et 90% de coverage.
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Pourquoi c'est important pour la démo SaaS ?</h2>
+            <p>
+              Chaque push Vercel embarque ces preuves. On montre ainsi aux incubateurs / employeurs que la conformité 
+              n'est pas une promesse, mais un module existant, testé et documenté.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h2>Architecture technique</h2>
+            <ul>
+              <li><strong>Modèles Django :</strong> PrivacyConsent, AccountDeletionRequest</li>
+              <li><strong>APIs REST :</strong> /legal/api/request-deletion/, /legal/api/export-data/, /legal/api/access-data/</li>
+              <li><strong>Sécurité :</strong> @login_required, @throttle_endpoint, SecurityEvent logging</li>
+              <li><strong>Automatisation :</strong> Celery task process_account_deletions (suppression programmée 30 jours)</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Tests & Coverage</h2>
+            <div class="results-grid">
+              <div class="result-card">
+                <div class="result-number">21</div>
+                <div class="result-label">Tests</div>
+              </div>
+              <div class="result-card">
+                <div class="result-number">100%</div>
+                <div class="result-label">Réussite</div>
+              </div>
+              <div class="result-card">
+                <div class="result-number">90%+</div>
+                <div class="result-label">Coverage</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-navigation">
+          <a href="/" class="cta ghost">← Retour à l'accueil</a>
+          <a href="/articles/google-oauth.html" class="cta">Google OAuth →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>SquidResearch™ — © 2025 Lucas Tymen. Tous droits réservés.</div>
+        <nav class="foot-nav">
+          <a href="/articles/rgpd-suite.html">RGPD</a>
+          <a href="/bientot.html">Bientôt</a>
+          <a href="mailto:contact@squidresearch.com">Contact</a>
+          <a href="https://github.com/LucasTymen/squidResearch" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
     </footer>
+
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
-
