@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enrichissement : Amélioration UX et Contraste — SquidResearch™</title>
+    <meta name="description" content="Amélioration majeure de l'interface de recherche intelligente : contraste optimisé, boutons visibles, et CRUD complet pour les prospects." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <style>
+      .article-header {
+        padding: 4rem 0 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+      }
+      .article-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        line-height: 1.8;
+      }
+      .article-content h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        color: #e5e5e5;
+      }
+      .article-content h3 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #d0d0d0;
+      }
+      .article-content p {
+        color: #d0d0d0;
+        margin-bottom: 1.5rem;
+      }
+      .article-content ul, .article-content ol {
+        color: #d0d0d0;
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+      }
+      .article-content li {
+        margin-bottom: 0.5rem;
+      }
+      .code-block {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        color: #f59e0b;
+      }
+      .highlight {
+        background: rgba(245, 158, 11, 0.2);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        color: #f59e0b;
+      }
+      .back-link {
+        display: inline-block;
+        margin: 2rem 0;
+        color: #f59e0b;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .back-link:hover {
+        color: #d97706;
+      }
+      .before-after {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .before, .after {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+      .before h4 {
+        color: #ef4444;
+        margin-top: 0;
+      }
+      .after h4 {
+        color: #10b981;
+        margin-top: 0;
+      }
+      @media (max-width: 768px) {
+        .before-after {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="/">🐙 SquidResearch™</a>
+      <nav class="nav">
+        <a href="/#features">Fonctionnalités</a>
+        <a href="/#modules">Modules</a>
+        <a href="/technologie.html">Technologie</a>
+        <a href="/articles/rgpd-suite.html">RGPD</a>
+        <a href="/bientot.html">Bientôt</a>
+        <a href="/#contact" class="cta cta-small">Démo</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="article-header">
+        <div class="container">
+          <h1>🎨 Enrichissement : Amélioration UX et Contraste</h1>
+          <p>27 novembre 2025</p>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <a href="/technologie.html" class="back-link">← Retour au blog Technologie</a>
+
+        <h2>Vue d'ensemble</h2>
+        <p>
+          L'interface de recherche intelligente (<span class="highlight">/enrichment/search/</span>) a bénéficié d'une amélioration majeure 
+          de l'expérience utilisateur, avec un focus particulier sur la lisibilité et l'accessibilité. 
+          Les cartes de résultats sont maintenant beaucoup plus lisibles, et les boutons d'action sont très visibles.
+        </p>
+
+        <h2>Problèmes Identifiés</h2>
+        <p>
+          Avant les améliorations, l'interface souffrait de plusieurs problèmes :
+        </p>
+        <ul>
+          <li>❌ Contraste insuffisant : fond semi-transparent rendant le texte difficile à lire</li>
+          <li>❌ Bordures peu visibles : difficulté à distinguer les cartes</li>
+          <li>❌ Bouton "Ajouter" discret : difficile à trouver et à utiliser</li>
+          <li>❌ Pas de feedback visuel lors de l'ajout de prospects</li>
+          <li>❌ Token CSRF manquant : erreurs de connexion lors des requêtes AJAX</li>
+        </ul>
+
+        <h2>Améliorations Apportées</h2>
+
+        <h3>🎨 Contraste et Lisibilité</h3>
+        <div class="before-after">
+          <div class="before">
+            <h4>Avant</h4>
+            <ul>
+              <li>Fond : <code>rgba(26, 26, 26, 0.8)</code> (semi-transparent)</li>
+              <li>Bordures : <code>1px</code> peu visibles</li>
+              <li>Texte : Gris moyen difficile à lire</li>
+            </ul>
+          </div>
+          <div class="after">
+            <h4>Après</h4>
+            <ul>
+              <li>Fond : <code>#1a1a1a</code> (opaque)</li>
+              <li>Bordures : <code>2px solid rgba(255, 255, 255, 0.2)</code></li>
+              <li>Texte : <code>#ffffff</code> (blanc pur)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>🟢 Bouton "Ajouter" Très Visible</h3>
+        <p>
+          Le bouton d'ajout aux prospects a été complètement redesigné :
+        </p>
+        <ul>
+          <li><strong>Dégradé vert vif</strong> : <code>linear-gradient(135deg, #10b981 0%, #059669 100%)</code></li>
+          <li><strong>Ombre verte</strong> : <code>box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3)</code></li>
+          <li><strong>Effet hover</strong> : Élévation avec ombre renforcée</li>
+          <li><strong>Taille</strong> : Pleine largeur, centré, padding généreux</li>
+          <li><strong>Icône</strong> : <code>fa-plus-circle</code> pour visibilité maximale</li>
+        </ul>
+
+        <h3>🔧 CRUD Prospects Fonctionnel</h3>
+        <p>
+          Implémentation complète des opérations CRUD pour les prospects :
+        </p>
+        <ul>
+          <li><strong>Ajout</strong> : Méthodes <code>addProspect()</code> et <code>addCompany()</code></li>
+          <li><strong>API</strong> : Intégration avec <code>/enrichment/api/import-to-list/</code></li>
+          <li><strong>Feedback</strong> : Notifications toast de succès/erreur</li>
+          <li><strong>État visuel</strong> : Bouton passe en "Ajouté" après import réussi</li>
+        </ul>
+
+        <h3>🔐 Correction Token CSRF</h3>
+        <p>
+          Ajout du token CSRF dans le template et récupération automatique :
+        </p>
+        <div class="code-block">
+// Dans le template
+{% csrf_token %}
+
+// Dans le JavaScript
+getCSRFToken() {
+  // Récupération depuis input hidden ou cookies
+  const tokenInput = document.querySelector('[name=csrfmiddlewaretoken]');
+  if (tokenInput) return tokenInput.value;
+  
+  const cookie = document.cookie.match(/csrftoken=([^;]+)/);
+  return cookie ? cookie[1] : '';
+}
+        </div>
+
+        <h2>Résultats</h2>
+        <p>
+          Les améliorations ont considérablement amélioré l'expérience utilisateur :
+        </p>
+        <ul>
+          <li>✅ Lisibilité : Contraste optimal en mode jour et nuit</li>
+          <li>✅ Accessibilité : Texte et bordures bien visibles</li>
+          <li>✅ Utilisabilité : Bouton d'ajout impossible à manquer</li>
+          <li>✅ Feedback : Notifications claires pour chaque action</li>
+          <li>✅ Fiabilité : Plus d'erreurs CSRF lors des requêtes AJAX</li>
+        </ul>
+
+        <h2>Fichiers Modifiés</h2>
+        <ul>
+          <li><code>templates/enrichment/enhanced_search.html</code> - Styles contraste, boutons, méthodes CRUD</li>
+        </ul>
+
+        <h2>Prochaines Améliorations</h2>
+        <ul>
+          <li>Page dédiée de gestion des prospects (voir/modifier/supprimer)</li>
+          <li>Modal pour créer une nouvelle liste directement depuis la recherche</li>
+          <li>Filtres avancés pour les résultats de recherche</li>
+          <li>Export des résultats en CSV/JSON</li>
+        </ul>
+
+        <p style="margin-top: 3rem;">
+          <a href="/technologie.html" class="back-link">← Retour au blog Technologie</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 SquidResearch™. Tous droits réservés. | <a href="/articles/rgpd-suite.html">RGPD</a> | <a href="/bientot.html">Bientôt</a></p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
+

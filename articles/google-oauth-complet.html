@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google OAuth : Intégration Complète — SquidResearch™</title>
+    <meta name="description" content="Implémentation complète de Google OAuth pour Gmail, Calendar et Drive dans SquidResearch™. Résolution du scope openid, connexion fonctionnelle, et envoi automatique des relances." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <style>
+      .article-header {
+        padding: 4rem 0 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      .article-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        line-height: 1.8;
+      }
+      .article-content h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        color: #e5e5e5;
+      }
+      .article-content h3 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #d0d0d0;
+      }
+      .article-content p {
+        color: #d0d0d0;
+        margin-bottom: 1.5rem;
+      }
+      .article-content ul, .article-content ol {
+        color: #d0d0d0;
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+      }
+      .article-content li {
+        margin-bottom: 0.5rem;
+      }
+      .code-block {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        color: #10b981;
+      }
+      .highlight {
+        background: rgba(102, 126, 234, 0.2);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        color: #667eea;
+      }
+      .back-link {
+        display: inline-block;
+        margin: 2rem 0;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .back-link:hover {
+        color: #764ba2;
+      }
+      .stats-box {
+        background: rgba(102, 126, 234, 0.1);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+      .stats-box h3 {
+        margin-top: 0;
+        color: #667eea;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="/">🐙 SquidResearch™</a>
+      <nav class="nav">
+        <a href="/#features">Fonctionnalités</a>
+        <a href="/#modules">Modules</a>
+        <a href="/technologie.html">Technologie</a>
+        <a href="/articles/rgpd-suite.html">RGPD</a>
+        <a href="/bientot.html">Bientôt</a>
+        <a href="/#contact" class="cta cta-small">Démo</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="article-header">
+        <div class="container">
+          <h1>🔐 Google OAuth : Intégration Complète et Fonctionnelle</h1>
+          <p>27 novembre 2025</p>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <a href="/technologie.html" class="back-link">← Retour au blog Technologie</a>
+
+        <h2>Vue d'ensemble</h2>
+        <p>
+          L'intégration Google OAuth dans SquidResearch™ permet de connecter Gmail, Google Calendar et Google Drive 
+          pour automatiser l'envoi des relances de candidature et synchroniser les événements. Après plusieurs itérations, 
+          l'intégration est maintenant <span class="highlight">100% fonctionnelle</span>.
+        </p>
+
+        <div class="stats-box">
+          <h3>📊 Résultats</h3>
+          <ul>
+            <li>✅ Connexion Google OAuth opérationnelle</li>
+            <li>✅ 1 compte connecté avec succès</li>
+            <li>✅ Envoi automatique des relances via Gmail API</li>
+            <li>✅ Intégration dans le Command Center</li>
+          </ul>
+        </div>
+
+        <h2>Le Problème du Scope `openid`</h2>
+        <p>
+          Lors de l'implémentation initiale, nous avons rencontré une erreur récurrente :
+        </p>
+        <div class="code-block">
+ERROR: ❌ Erreur échange code OAuth: Scope has changed from "..." to "... openid"
+        </div>
+        <p>
+          Google ajoute automatiquement le scope <span class="highlight">openid</span> lorsque vous demandez 
+          <code>userinfo.email</code> ou <code>userinfo.profile</code>, mais notre liste de scopes ne l'incluait pas explicitement. 
+          Cela causait une incompatibilité lors de l'échange du code d'autorisation contre les tokens.
+        </p>
+
+        <h2>La Solution</h2>
+        <p>
+          La correction a été simple mais cruciale : ajouter explicitement <span class="highlight">openid</span> 
+          dans la liste des scopes demandés.
+        </p>
+        <div class="code-block">
+SCOPES = [
+    'openid',  # ✅ Ajouté explicitement
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/gmail.send',
+    'https://www.googleapis.com/auth/calendar',
+    'https://www.googleapis.com/auth/drive',
+]
+        </div>
+
+        <h2>Fonctionnalités Implémentées</h2>
+        
+        <h3>🔗 Connexion OAuth</h3>
+        <ul>
+          <li>Génération de l'URL d'autorisation avec tous les scopes nécessaires</li>
+          <li>Gestion du callback OAuth avec échange code/tokens</li>
+          <li>Stockage sécurisé des tokens avec refresh automatique</li>
+          <li>Validation des credentials Google Cloud (Client ID + Secret)</li>
+        </ul>
+
+        <h3>📧 Envoi Automatique des Relances</h3>
+        <p>
+          Les relances programmées sont maintenant envoyées automatiquement via Gmail OAuth :
+        </p>
+        <ul>
+          <li>Tâche Celery <code>send_scheduled_followups()</code> exécutée toutes les heures</li>
+          <li>Utilisation de <code>GmailService.send_email()</code> pour l'envoi</li>
+          <li>Fallback : marque comme "pending" si l'intégration Gmail n'est pas active</li>
+        </ul>
+
+        <h3>🎛️ Intégration Dashboard</h3>
+        <p>
+          Le statut de connexion Google est visible dans le Command Center :
+        </p>
+        <ul>
+          <li>Bouton "Connecter Gmail" avec style BOGOSS (dégradé Google)</li>
+          <li>Affichage du statut de connexion (connecté/déconnecté)</li>
+          <li>Liens directs vers la gestion des intégrations</li>
+        </ul>
+
+        <h2>Fichiers Modifiés</h2>
+        <ul>
+          <li><code>apps/integrations/services_google.py</code> - Scope <code>openid</code> ajouté</li>
+          <li><code>apps/applications/tasks.py</code> - Envoi Gmail OAuth dans les relances</li>
+          <li><code>templates/command_center.html</code> - Section Intégrations</li>
+          <li><code>squidresearch/views_command.py</code> - Fonction <code>get_google_integration_status()</code></li>
+        </ul>
+
+        <h2>Prochaines Étapes</h2>
+        <p>
+          L'intégration Google OAuth est maintenant opérationnelle. Les prochaines améliorations prévues incluent :
+        </p>
+        <ul>
+          <li>Intégration LinkedIn OAuth (en cours de développement)</li>
+          <li>Synchronisation bidirectionnelle des événements Calendar</li>
+          <li>Gestion des fichiers Drive pour les CV et lettres de motivation</li>
+        </ul>
+
+        <p style="margin-top: 3rem;">
+          <a href="/technologie.html" class="back-link">← Retour au blog Technologie</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 SquidResearch™. Tous droits réservés. | <a href="/articles/rgpd-suite.html">RGPD</a> | <a href="/bientot.html">Bientôt</a></p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
+

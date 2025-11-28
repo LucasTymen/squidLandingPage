@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Technologie — SquidResearch™ Blog</title>
+    <meta name="description" content="Articles techniques sur les fonctionnalités de SquidResearch™ : Google OAuth, One-Click Application, Enrichissement, et plus encore." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <style>
+      .blog-header {
+        padding: 4rem 0 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      .blog-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .blog-header p {
+        font-size: 1.25rem;
+        opacity: 0.9;
+      }
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 3rem 0;
+      }
+      .article-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+      .article-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(102, 126, 234, 0.5);
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+      }
+      .article-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #e5e5e5;
+      }
+      .article-card .date {
+        color: #a0a0a0;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .article-card p {
+        color: #d0d0d0;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+      .article-card .read-more {
+        display: inline-block;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .article-card .read-more:hover {
+        color: #764ba2;
+      }
+      .back-link {
+        display: inline-block;
+        margin: 2rem 0;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .back-link:hover {
+        color: #764ba2;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="/">🐙 SquidResearch™</a>
+      <nav class="nav">
+        <a href="/#features">Fonctionnalités</a>
+        <a href="/#modules">Modules</a>
+        <a href="/technologie.html">Technologie</a>
+        <a href="/articles/rgpd-suite.html">RGPD</a>
+        <a href="/bientot.html">Bientôt</a>
+        <a href="/#contact" class="cta cta-small">Démo</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="blog-header">
+        <div class="container">
+          <h1>🔧 Technologie</h1>
+          <p>Articles techniques sur les fonctionnalités et améliorations de SquidResearch™</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <a href="/" class="back-link">← Retour à l'accueil</a>
+        
+        <div class="articles-grid">
+          <article class="article-card">
+            <h3>🔐 Google OAuth : Intégration Complète et Fonctionnelle</h3>
+            <div class="date">27 novembre 2025</div>
+            <p>
+              Découvrez comment nous avons implémenté l'intégration Google OAuth complète pour Gmail, Calendar et Drive. 
+              Résolution du problème de scope `openid`, connexion fonctionnelle, et envoi automatique des relances via Gmail API.
+            </p>
+            <a href="/articles/google-oauth-complet.html" class="read-more">Lire l'article →</a>
+          </article>
+
+          <article class="article-card">
+            <h3>🚀 One-Click Application : Candidature Automatique en un Clic</h3>
+            <div class="date">27 novembre 2025</div>
+            <p>
+              Le module One-Click Application permet de créer une candidature complète depuis une simple URL d'offre d'emploi. 
+              Enrichissement automatique, matching IA, génération de lettre de motivation, et programmation de relances multi-canaux.
+            </p>
+            <a href="/articles/one-click-application.html" class="read-more">Lire l'article →</a>
+          </article>
+
+          <article class="article-card">
+            <h3>🎨 Enrichissement : Amélioration UX et Contraste</h3>
+            <div class="date">27 novembre 2025</div>
+            <p>
+              Amélioration majeure de l'interface de recherche intelligente : contraste optimisé pour une meilleure lisibilité, 
+              boutons d'ajout très visibles, et implémentation complète du CRUD pour les prospects.
+            </p>
+            <a href="/articles/enrichissement-ux.html" class="read-more">Lire l'article →</a>
+          </article>
+
+          <article class="article-card">
+            <h3>🔒 Suite RGPD : Conformité Opérationnelle</h3>
+            <div class="date">26 novembre 2025</div>
+            <p>
+              Implémentation complète de la suite RGPD : droit à l'oubli, portabilité des données, droit d'accès, 
+              avec une couverture de tests de 95%+. Tous les aspects de la conformité sont opérationnels.
+            </p>
+            <a href="/articles/rgpd-suite.html" class="read-more">Lire l'article →</a>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 SquidResearch™. Tous droits réservés. | <a href="/articles/rgpd-suite.html">RGPD</a> | <a href="/bientot.html">Bientôt</a></p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
+
